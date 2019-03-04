@@ -18,7 +18,7 @@ def scrape():
     nasa = "https://mars.nasa.gov/news/"
     browser.visit(nasa)
 
-    tm.sleep(2)
+    
 
     html = browser.html
     bsoup = bs(html,"html.parser")
@@ -36,7 +36,7 @@ def scrape():
     url_image = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
     #Visit URL 
     browser.visit(url_image)
-    tm.sleep(2)
+    
 
     #Get HTML codes 
     html_image = browser.html
@@ -79,7 +79,7 @@ def scrape():
     ### Facts
 
     url_facts = "https://space-facts.com/mars/"
-    tm.sleep(2)
+    
     table = pd.read_html(url_facts)
     table[0]
 
@@ -92,39 +92,6 @@ def scrape():
     # Store Data
     mars_facts["mars_facts_table"] = mars_table
 
-    # ### Hemisperes
-
-    
-    # # scrape pictures
-    # url_pic = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
-    # browser.visit(url_pic)
-
-    # # loop through images and load
-    # import time 
-    # html = browser.html
-    # bsoup = bs(html, 'html.parser')
-    # hemi_image_url=[]
-
-    # for i in range (4):
-    #     tm.sleep(2)
-    #     images = browser.find_by_tag('h3')
-    #     images[i].click()
-    #     html = browser.html
-    #     bsoup = bs(html, 'html.parser')
-    #     part = bsoup.find("img", class_="wide-image")["src"]
-
-    #     img_title = bsoup.find("h2",class_="title").text
-    #     img_url = 'https://astrogeology.usgs.gov'+ part
-
-    #     dictionary={"image title":img_title,"image url":img_url}
-
-    #     hemi_image_url.append(dictionary)
-    #     browser.back()
-
-    # print(hemi_image_url)
-
-    # mars_facts["hemisphere_img_url"] = hemi_image_url
-
-    
+    ### Hemisperes
 
     return mars_facts
